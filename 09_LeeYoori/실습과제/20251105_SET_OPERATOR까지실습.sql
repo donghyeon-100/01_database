@@ -105,6 +105,9 @@ select * from DEPARTMENT;
     where j.JOB_NAME = '대리'
     and l.LOCAL_NAME in('ASIA1', 'ASIA2', 'ASIA2');
 
+select * from DEPARTMENT;
+select *from LOCATION;
+
 -- 9. 각 부서별 평균 급여와 직원 수를 조회하시오. (NULL 급여는 제외)
 -- 평균 급여가 높은 순으로 정렬하시오. (6행)
 
@@ -162,4 +165,13 @@ select * from JOB;
     union
     select "사원" as "구분",sum(e.SALARY)
     from EMPLOYEE e
-    where JOB_CODE = 'J7'
+    where JOB_CODE = 'J7';
+
+
+-- 전체 평균 급여보다 높은 급여를 받는 직원들을 조회하세요.
+select e.EMP_NAME, e.SALARY
+from EMPLOYEE e
+where SALARY > (select avg(SALARY) from EMPLOYEE);
+
+
+select round(avg(SALARY)) from EMPLOYEE
